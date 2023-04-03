@@ -1,2 +1,2 @@
-# sqlite-dictionaries
- this repository is where I add and manage my dictionary sqlite database using sqlite.
+# dictionaries
+ This is were I put sqlite dictionaries. Its its open source so anyone can use it, support me if you like this repo.
