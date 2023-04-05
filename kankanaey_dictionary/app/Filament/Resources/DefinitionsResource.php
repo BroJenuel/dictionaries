@@ -19,7 +19,8 @@ class DefinitionsResource extends Resource
 {
     protected static ?string $model = Definitions::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+
 
     public static function form(Form $form): Form
     {
@@ -35,7 +36,7 @@ class DefinitionsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('word'),
+                Tables\Columns\TextColumn::make('word')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('word_type'),
                 Tables\Columns\TextColumn::make('definitions')
             ])
@@ -49,6 +50,7 @@ class DefinitionsResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
+
 
     public static function getRelations(): array
     {
