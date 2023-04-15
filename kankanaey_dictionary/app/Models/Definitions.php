@@ -22,6 +22,7 @@ class Definitions extends Model
         'word',
         'word_type',
         'definitions',
+        'language'
     ];
 
     public function isTableSearchable(): bool

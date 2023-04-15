@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('word')->nullable(false);
             $table->string('word_type')->nullable();
             $table->string('definitions')->nullable(false);
+            $table->string('language')->nullable(false)->after('word');
             $table->timestamps();
         });
     }

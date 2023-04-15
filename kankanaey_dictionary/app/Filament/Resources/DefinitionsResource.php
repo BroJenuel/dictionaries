@@ -27,6 +27,10 @@ class DefinitionsResource extends Resource
         return $form
             ->schema([
                 TextInput::make('word'),
+                Forms\Components\Radio::make('language')->options([
+                    'kankana-ey' => 'Kankana-ey',
+                    'english' => 'English'
+                ]),
                 TextInput::make('word_type'),
                 Textarea::make('definitions')
             ]);
@@ -38,6 +42,7 @@ class DefinitionsResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('word')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('word_type'),
+                Tables\Columns\TextColumn::make('language'),
                 Tables\Columns\TextColumn::make('definitions')
             ])
             ->filters([
