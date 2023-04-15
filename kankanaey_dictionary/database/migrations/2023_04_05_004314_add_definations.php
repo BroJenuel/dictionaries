@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('definitions', function (Blueprint $table) {
             $table->id();
-            $table->string('word')->nullable(false);
+            $table->string('word')->nullable(false)->unique();
             $table->string('word_type')->nullable();
             $table->string('definitions')->nullable(false);
             $table->string('language')->nullable(false)->after('word');

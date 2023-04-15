@@ -3,17 +3,16 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\DefinitionsResource\Pages;
-use App\Filament\Resources\DefinitionsResource\RelationManagers;
 use App\Models\Definitions;
+use Exception;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Illuminate\Validation\Rules\Exists;
 
 class DefinitionsResource extends Resource
 {
@@ -26,16 +25,19 @@ class DefinitionsResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('word'),
+                TextInput::make('word')->unique()->required(),
                 Forms\Components\Radio::make('language')->options([
                     'kankana-ey' => 'Kankana-ey',
                     'english' => 'English'
-                ]),
+                ])->required(),
                 TextInput::make('word_type'),
-                Textarea::make('definitions')
+                Textarea::make('definitions')->required()
             ]);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
